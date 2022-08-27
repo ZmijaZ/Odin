@@ -1,0 +1,48 @@
+form{
+
+    color: whitesmoke;
+    border: 1px solid lightgray;
+    padding: 10px;
+
+}
+
+#taskForm{
+
+    position: relative;
+    top:-50px;
+    visibility: hidden;
+
+}
+
+#redButton{
+
+    background-color: salmon;
+
+}
+
+
+
+#inbox{
+
+    
+
+
+}
+
+.taskDiv{
+
+    padding: 3px;
+    border: 1px solid red;
+
+}
+
+
+#projectForm{
+
+    padding: 10px;
+    position: relative;
+    top: -50px;
+
+    visibility: hidden;
+
+}
