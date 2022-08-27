@@ -1,4 +1,4 @@
-import { h1, board } from "./index.js";
+import { h1, board } from "./game.js";
 
 function GameBoard() {
   let winner = "";

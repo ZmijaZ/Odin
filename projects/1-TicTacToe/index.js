@@ -1,44 +1,46 @@
-const h1 = document.querySelector("#h1");
+import { Player } from "./Player.js";
+import { board, clearTiles } from "./game.js";
 
-const divArray = [];
+const player1 = document.querySelector("#player1");
+const player2 = document.querySelector("#player2");
+const button = document.querySelector("#button");
+const form = document.querySelector("#form");
 
-import { GameBoard } from "./objects.js";
+let playerOne = Player("X");
+let playerTwo = Player("O");
 
-let Table = GameBoard();
+let checkGame = false;
 
-const board = document.querySelector("#board");
-board.style.color = "green";
-
-let numberOfTiles = 9;
-let playerX = true;
-
-for (let i = 0; i < numberOfTiles; i++) {
-  const divi = document.createElement("div");
-  board.appendChild(divi);
-  divArray.push(divi);
-
-  divi.addEventListener("click", function () {
-    if (divi.textContent == "" && playerX && h1.textContent == "TicTacToe") {
-      divi.textContent = "X";
-      Table.tiles[i] = "X";
-      divi.style.color = "red";
-
-      if (Table.checkWinner("X") == 1) divi.style.filter = "blur(4px)";
-      playerX = !playerX;
-      console.log(i + " selected");
-    } else if (divi.textContent == "" && !playerX) {
-      divi.textContent = "O";
-      Table.tiles[i] = "O";
-      divi.style.color = "green";
-
-      if (Table.checkWinner("O") == 1) divi.style.filter = "blur(4px)";
-
-      playerX = !playerX;
-      console.log(i + " selected");
-    } else {
-      console.log(divi.textContent);
+button.addEventListener("click", function () {
+  if (checkGame == false) {
+    if (player1.value != "") {
+      playerOne.setName(player1.value);
     }
-  });
-}
+    if (player2.value != "") {
+      playerTwo.setName(player2.value);
+    }
 
-export { h1, board };
+    //cleanup
+    player1.style.height = "0px";
+    player2.style.height = "0px";
+    player1.style.visibility = "hidden";
+    player2.style.visibility = "hidden";
+    board.style.visibility = "visible";
+
+    button.style.visibility = "hidden";
+    button.style.height = "0px";
+
+    board.style.position = "relative";
+    board.style.top = "-25px";
+
+    checkGame = !checkGame;
+  } else {
+    checkGame = !checkGame;
+    button.textContent = "Start game";
+    clearTiles();
+  }
+});
+
+//I export players to game.js, in order to write out their names in the function checkWinner
+
+export { playerOne, playerTwo };
