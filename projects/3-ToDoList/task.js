@@ -50,6 +50,7 @@ function Project(text){
 
     let name = text;
     const projectTasks = [];
+    const projectTasksDiv = [];
 
     function setName(x){
         name = x;
@@ -58,11 +59,12 @@ function Project(text){
         return name;
     }
 
-    function addTask(task){
+    function addTask(task, taskDiv){
         projectTasks.push(task);
+        projectTasksDiv.push(taskDiv);
     }
 
-    return {setName, getName, projectTasks}
+    return {setName, getName, projectTasks, projectTasksDiv, addTask}
 
 }
 
