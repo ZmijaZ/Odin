@@ -45,4 +45,25 @@ form{
 
     visibility: hidden;
 
+
+}
+
+#projectInbox{
+
+    background-color: red;
+    position: relative;
+    top: -60px;
+
+}
+
+.projectDiv{
+
+    padding: 5px;
+
+}
+
+.projectDiv:hover{
+
+    background-color: gray;
+
 }

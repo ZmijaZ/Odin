@@ -6,6 +6,7 @@ const main = document.querySelector('#main');
 const addTask = document.querySelector("#addTask");
 const addProject = document.querySelector('#addProject');
 const h1 = document.querySelector('#h1');
+const inboxDiv = document.querySelector('#inboxDiv');
 
 //Task
 const taskForm = document.querySelector('#taskForm');
@@ -41,11 +42,18 @@ addProject.addEventListener('click', openProjectInput);
 redButton1.addEventListener('click', closeProjectInput);
 greenButton1.addEventListener('click', greenButton1Handler);
 
+inboxDiv.addEventListener('click', function(){
+
+    h1.textContent = 'Inbox';
+    showProjectTasks();
+
+})
+
 //extra dataStructures
 const inboxTaskArray = [];
 const projectArray = [];
 
-let inboxProject = Project('inbox');
+let inboxProject = Project('Inbox');
 projectArray.push(inboxProject);
 
 
@@ -78,20 +86,25 @@ function greenButtonHandler(){
     taskDiv.classList.add('taskDiv');
     taskDiv.innerText = taskInput.value;
 
+    //
+    addTaskToProject(task, taskDiv);
+    //
+
+    inbox.appendChild(taskDiv);
+    // showProjectTasks();
+
     //add the ability to see task info
     let infoDiv = addTaskInfo(taskDiv);
     taskAddClickHandler(taskDiv, infoDiv);
-    inbox.appendChild(taskDiv);
 
     //cleanup
     addTask.style.visibility = 'visible';
     taskForm.style.visibility = 'hidden';
     taskInput.value = '';
-
     //print some basic info (helps during dev)
     let taskInfo = (`Task name: ${task.name}, folder name: ${task.getFolder()}, date: ${task.getDate()}, priority: ${task.getPriority()}, description: ${task.getDescription().substring(0, 20)}`);
     console.log(taskInfo);
-    console.log(inboxTaskArray);
+    // console.log(inboxTaskArray);
 }
 
 //Project functions
@@ -119,11 +132,11 @@ function greenButton1Handler(){
     projectDiv.classList.add('projectDiv');
 
     //
-    projectArray.push(projectDiv);
+    projectArray.push(project);
     projectInbox.appendChild(projectDiv);
 
     //open the project tasks
-    projectAddClickHandler(projectDiv);
+    projectAddClickHandler(project, projectDiv);
 
     //add new option to project select
     let option = new Option(projectInput.value, projectInput.value)
@@ -187,16 +200,42 @@ function taskAddClickHandler(task, info){
     })
 }
 
-function projectAddClickHandler(project){
+function projectAddClickHandler(project, projectDiv){
 
-    project.addEventListener('click', function(){
+    projectDiv.addEventListener('click', function(){
 
-        h1.textContent = project.textContent;
+        h1.textContent = project.getName();
 
-        console.log(inbox.children);
-        console.log(inbox.children.length);
-
-
+        showProjectTasks();
     })
 
+}
+
+function addTaskToProject(task, taskDiv){
+
+    for(let x of projectArray){
+        if(x.getName() === task.getFolder()){
+            x.addTask(task, taskDiv);
+        } 
+    }
+}
+
+function showProjectTasks(){
+
+    //remove inbox tasks
+    console.log(inbox.children.length);
+    inbox.innerHTML = '';
+
+    for(let x of projectArray){
+
+        if(h1.textContent === x.getName()){
+            console.log(inbox.children.length);
+
+            //append the project tasks
+            for(let task of x.projectTasksDiv){
+                inbox.appendChild(task);
+            }
+
+        }
+    }
 }
