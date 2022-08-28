@@ -98,7 +98,7 @@ function closeProjectInput(){
     addProject.style.visibility = 'visible';
     projectForm.style.visibility = 'hidden';
 
-    projectInput.value();
+    projectInput.value = '';
 }
 
 function greenButton1Handler(){
@@ -111,6 +111,10 @@ function greenButton1Handler(){
     projectDiv.classList.add('projectDiv');
 
     projectInbox.appendChild(projectDiv);
+
+    //add new option to project select
+    let option = new Option(projectInput.value, projectInput.value)
+    folderInput.appendChild(option);
 
 
     //cleanup
