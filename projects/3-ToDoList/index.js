@@ -62,12 +62,16 @@ function openTaskInput(){
 
     addTask.style.visibility = 'hidden';
     taskForm.style.visibility = 'visible';
+
+    inbox.style.marginTop = '0px';
 }
 
 function closeTaskInput(){
 
     addTask.style.visibility = 'visible';
     taskForm.style.visibility = 'hidden';
+
+    inbox.style.marginTop = '-120px';
 }
 
 function greenButtonHandler(){
@@ -83,8 +87,12 @@ function greenButtonHandler(){
 
     //create taskDiv
     let taskDiv = document.createElement('div');
+    let taskP = document.createElement('p');
+    taskP.textContent = task.getName();
+    taskP.id = 'taskP';
+
     taskDiv.classList.add('taskDiv');
-    taskDiv.innerText = taskInput.value;
+    taskDiv.appendChild(taskP);
 
     //
     addTaskToProject(task, taskDiv);
@@ -101,6 +109,7 @@ function greenButtonHandler(){
     addTask.style.visibility = 'visible';
     taskForm.style.visibility = 'hidden';
     taskInput.value = '';
+    inbox.style.marginTop = '-120px';
     //print some basic info (helps during dev)
     let taskInfo = (`Task name: ${task.name}, folder name: ${task.getFolder()}, date: ${task.getDate()}, priority: ${task.getPriority()}, description: ${task.getDescription().substring(0, 20)}`);
     console.log(taskInfo);
@@ -152,6 +161,7 @@ function addTaskInfo(task){
 
     //createElement
     const infoDiv = document.createElement('div');
+    infoDiv.classList.add('infoDiv');
     const infoDate = document.createElement('p');
     const infoPriority = document.createElement('p');
     const infoDescription = document.createElement('p');
@@ -163,17 +173,19 @@ function addTaskInfo(task){
     infoFolder.textContent = `Project: ${folderInput.value ? folderInput.value : 'none'}`;
 
     //append
-    infoDiv.appendChild(infoDate);
-    infoDiv.appendChild(infoPriority);
+   
     infoDiv.appendChild(infoDescription);
+    infoDiv.appendChild(infoPriority);
+    infoDiv.appendChild(infoDate);
+    
     infoDiv.appendChild(infoFolder);
+    
 
     task.appendChild(infoDiv);
         
     //style
     infoDiv.style.width = '200px';
     infoDiv.style.height = '100px';
-    infoDiv.style.backgroundColor = 'blueviolet';
     infoDiv.style.visibility = 'hidden';
     infoDiv.style.height = '0px';
 

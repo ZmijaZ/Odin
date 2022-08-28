@@ -3,7 +3,39 @@ form{
     color: whitesmoke;
     border: 1px solid lightgray;
     padding: 10px;
+    width: 100%;
+    min-width: 200px;
 
+    min-height: 130px;
+
+    background-color: lightblue;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10%;
+}
+
+form input[type = 'text']{
+
+    padding: 5px;
+    font-size: 14px;
+    width: 92%;
+
+    min-width: 150px;
+   
+}
+
+form select{
+
+    padding: 5px;
+    font-size: 14px;
+
+}
+
+form textarea{
+
+    width: 97%;
+    height: 100%;
 }
 
 #taskForm{
@@ -11,59 +43,187 @@ form{
     position: relative;
     top:-50px;
     visibility: hidden;
-
-}
-
-#redButton{
-
-    background-color: salmon;
-
 }
 
 
+#buttons{
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    position: relative;
+    left: 13px;
+}
+
+#redButton, #greenButton{
+
+    background-color: rgb(255, 98, 98);
+    width: 47%;
+    padding: 8px;
+    border: none;
+
+    margin-top: -10px;
+    border-radius: 8px;
+}
+
+#greenButton{
+
+    background-color: rgb(109, 236, 109);
+
+}
+
+#redButton:hover,
+#greenButton:hover{
+
+    opacity: 0.8;
+    cursor: pointer;
+
+}
+
+#redButton:active,
+#greenButton:active {
+
+    box-shadow: 3px 3px;
+
+}
 
 #inbox{
 
-    
-
+    margin-top: -120px;    
 
 }
 
 .taskDiv{
 
-    padding: 3px;
-    border: 1px solid red;
+    padding: 1px;
+    border-radius: 10px;
 
+    font-size: 18px;
+    letter-spacing: 1px;
+    word-spacing: 1px;
 }
 
+.taskDiv #taskP{
+
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 1000;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+}
+
+.taskDiv:hover{
+
+    background-color: gray;
+    cursor: pointer;
+
+}
 
 #projectForm{
 
     padding: 10px;
     position: relative;
-    top: -50px;
+    top: -70px;
+    left: -10px;
 
     visibility: hidden;
 
+    width: 100%;
 
 }
 
-#projectInbox{
+#projectForm input{
 
-    background-color: red;
+    padding: 7px;
+    border: 1px solid gray;
+    width: 100%;
+    border-radius: 5px;
+
+}
+
+
+#buttons1{
+
+    width: 120%;
+    margin-top: 5px;
+
     position: relative;
-    top: -60px;
+    left: -10px;
+    
+    display: flex;
+    justify-content: space-around;
+}
+
+#projectForm button{
+
+    width: 40%;
+
+}
+
+#redButton1, #greenButton1{
+
+    background-color: rgb(255, 98, 98);
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+
+    font-size: 14px;
+}
+
+#greenButton1{
+
+    background-color: rgb(109, 236, 109);
+}
+
+#redButton1:hover,
+#greenButton1:hover{
+
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#redButton1:active,
+#greenButton1:active {
+
+    box-shadow: 2px 2px;
+
+}
+
+#projectInbox {
+
+    position: relative;
+    top: -80px;
 
 }
 
 .projectDiv{
 
     padding: 5px;
+    margin-bottom: 5px;
 
 }
 
 .projectDiv:hover{
 
     background-color: gray;
+    cursor: pointer;
 
+}
+
+.projectDiv:active{
+
+    background-color: rgb(87, 87, 87);
+
+}
+
+.infoDiv{
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 5%;
+
+    word-break: break-all;
+    font-size: 18px;
 }

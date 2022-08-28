@@ -19,7 +19,7 @@ nav {
   color: white;
 
   width: 15%;
-  min-width: 150px;
+  min-width: 180px;
   height: 100%;
   padding: 0.5%;
 
@@ -54,6 +54,18 @@ nav #sortSection div:hover {
   cursor: pointer;
 }
 
+nav #sortSection div:active{
+
+  background-color: rgb(87, 87, 87);
+
+}
+
+nav #projectsSection{
+
+  margin-top: 0px;
+
+}
+
 nav #addProject:hover{
 
   background-color: gray;
@@ -62,7 +74,7 @@ nav #addProject:hover{
 }
 
 nav #addProject {
-  min-width: 200px;
+  min-width: 150px;
   letter-spacing: 1px;
   word-spacing: 2px;
   font-size: 18px;
@@ -106,6 +118,7 @@ footer {
 
   border: none;
   border-radius: 10px;
+
 }
 
 #main span {
@@ -119,4 +132,10 @@ footer {
 #main #addTask:hover {
   background-color: gray;
   cursor: pointer;
+}
+
+#main #addTask:active {
+
+  background-color: rgb(87, 87, 87);
+
 }
