@@ -1,5 +1,5 @@
 
-import {Task} from './task.js'
+import {Task, Project} from './task.js'
 
 //querySelectors
 const main = document.querySelector('#main');
@@ -23,7 +23,11 @@ const projectForm = document.querySelector('#projectForm');
 const greenButton1 = document.querySelector('#greenButton1');
 const redButton1 = document.querySelector('#redButton1');
 
+const projectInput = document.querySelector('#projectInput');
+
+//
 const inbox = document.querySelector('#inbox');
+const projectInbox = document.querySelector('#projectInbox');
 
 //addEventListeners 
     //Tasks
@@ -38,6 +42,7 @@ greenButton1.addEventListener('click', greenButton1Handler);
 
 //extra dataStructures
 const inboxTaskArray = [];
+const projectArray = [];
 
 //eventHandlers
 function openTaskInput(){
@@ -67,15 +72,18 @@ function greenButtonHandler(){
     taskDiv.classList.add('taskDiv');
     taskDiv.innerText = taskInput.value;
 
+    taskAddClickHandler(taskDiv);
     inbox.appendChild(taskDiv);
 
-    let taskInfo = (`Task name: ${task.name}, folder name: ${task.getFolder()}, date: ${task.getDate()}, priority: ${task.getPriority()}, description: ${task.getDescription().substring(0, 20)}`);
-    console.log(taskInfo);
 
     //cleanup
     addTask.style.visibility = 'visible';
     taskForm.style.visibility = 'hidden';
     taskInput.value = '';
+
+    let taskInfo = (`Task name: ${task.name}, folder name: ${task.getFolder()}, date: ${task.getDate()}, priority: ${task.getPriority()}, description: ${task.getDescription().substring(0, 20)}`);
+    console.log(taskInfo);
+    console.log(inboxTaskArray);
 }
 
 //Project functions
@@ -83,7 +91,6 @@ function openProjectInput(){
 
     addProject.style.visibility = 'hidden';
     projectForm.style.visibility = 'visible';
-
 }
 
 function closeProjectInput(){
@@ -91,8 +98,60 @@ function closeProjectInput(){
     addProject.style.visibility = 'visible';
     projectForm.style.visibility = 'hidden';
 
+    projectInput.value();
 }
 
 function greenButton1Handler(){
-    
+
+    let project = Project(projectInput.value);
+
+    //createProjectDiv
+    let projectDiv = document.createElement('div');
+    projectDiv.textContent = project.getName();
+    projectDiv.classList.add('projectDiv');
+
+    projectInbox.appendChild(projectDiv);
+
+
+    //cleanup
+    addProject.style.visibility = 'visible';
+    projectForm.style.visibility = 'hidden';
+    projectInput.value = '';
 }
+
+
+
+function taskAddClickHandler(task){
+
+    console.log(inboxTaskArray);
+
+    task.addEventListener('click', function(){
+
+        //createElement
+        const infoDiv = document.createElement('div');
+        const infoDate = document.createElement('p');
+        const infoPriority = document.createElement('p');
+        const infoDescription = document.createElement('p');
+        const infoFolder = document.createElement('p');
+
+        infoDate.textContent = `Date: ${dateInput.value ? dateInput.value : 'none'}`;
+        infoPriority.textContent = `Priority: ${priorityInput.value ? priorityInput.value : 'none'}`;
+        infoDescription.textContent = `Description: ${descriptionInput.value ? descriptionInput.value : 'none'}`;
+        infoFolder.textContent = `Project: ${folderInput.value ? folderInput.value : 'none'}`;
+
+        //append
+        infoDiv.appendChild(infoDate);
+        infoDiv.appendChild(infoPriority);
+        infoDiv.appendChild(infoDescription);
+        infoDiv.appendChild(infoFolder);
+
+        //style
+        infoDiv.style.width = '200px';
+        infoDiv.style.height = '100px';
+        infoDiv.style.backgroundColor = 'blueviolet';
+
+        task.appendChild(infoDiv);
+    })
+
+}
+

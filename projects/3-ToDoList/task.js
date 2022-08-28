@@ -66,4 +66,4 @@ function Project(text){
 
 }
 
-export {Task};
+export {Task, Project};
