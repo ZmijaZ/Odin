@@ -53,12 +53,12 @@ inboxDiv.addEventListener('click', function(){
 todayDiv.addEventListener('click', showTodayTasks)
 
 //extra dataStructures
-const taskArray = [];
-const taskArrayDiv = [];
-const projectArray = [];
+const taskArray = new Set();
+const taskArrayDiv = new Set();
+const projectArray = new Set();
 
 let inboxProject = Project('Inbox');
-projectArray.push(inboxProject);
+projectArray.add(inboxProject);
 
 
 //eventHandlers
@@ -86,57 +86,87 @@ function closeTaskInput(){
 function greenButtonHandler(){
 
     //get the task info
-    let task = Task(taskInput.value);
-    task.setDate(dateInput.value);
-    task.setPriority(priorityInput.value);
-    task.setDescription(descriptionInput.value);
-    task.setFolder(folderInput.value);
+    if(taskInput.value == ''){
+        taskInput.style.border = '1px solid red';
+        taskInput.placeholder = 'ENTER NAME FIRST';
+        setTimeout(function(){
+            taskInput.style.border = '1px solid gray';
+            taskInput.placeholder = 'Enter task';
+        }, 1000)
+    }else{
+        let task = Task(taskInput.value);
+        task.setDate(dateInput.value);
+        task.setPriority(priorityInput.value);
+        task.setDescription(descriptionInput.value);
+        task.setFolder(folderInput.value);
 
-    taskArray.push(task);
+        taskArray.add(task);
 
-    //create taskDiv
-    let taskDiv = document.createElement('div');
-    let taskP = document.createElement('p');
-    taskP.textContent = task.getName();
-    taskP.id = 'taskP';
-        //extra functionality
-    const editDiv = document.createElement('div');
-    const editP = document.createElement('span');
-    const closeP = document.createElement('span');
-    editP.textContent = 'E';
-    closeP.textContent = 'X';
+        //create taskDiv
+        let taskDiv = document.createElement('div');
+        let taskP = document.createElement('p');
+        taskP.textContent = task.getName();
+        taskP.id = 'taskP';
+            //extra functionality
+        let textDiv = document.createElement('div'); //to store taskName and edit/delete 
+        const editDiv = document.createElement('div');
+        let editP = document.createElement('span');
+        editP.classList.add('editP');
+        let closeP = document.createElement('span');
+        closeP.classList.add('closeP');
+        editP.textContent = 'E';
+        closeP.textContent = 'X';
 
-    editDiv.appendChild(editP);
-    editDiv.appendChild(closeP);
+        taskArrayDiv.add(taskDiv);
 
-    taskArrayDiv.push(taskDiv);
+        taskDiv.classList.add('taskDiv');
+        textDiv.classList.add('textDiv')
+        editDiv.appendChild(editP);
+        editDiv.appendChild(closeP);
+        textDiv.appendChild(taskP);
+        textDiv.appendChild(editDiv);
 
-    taskDiv.classList.add('taskDiv');
-    taskDiv.appendChild(taskP);
-    taskDiv.appendChild(editDiv);
+        taskDiv.appendChild(textDiv);
 
-    //
-    addTaskToProject(task, taskDiv);
-    //
+        //
+        addTaskToProject(task, taskDiv);
+        //
 
-    inbox.appendChild(taskDiv);
-    // showProjectTasks();
+        inbox.appendChild(taskDiv);
+        // showProjectTasks();
 
-    //add the ability to see task info
-    let infoDiv = addTaskInfo(taskDiv);
-    taskAddClickHandler(taskDiv, infoDiv);
+        //add the ability to see task info
+        let infoDiv = addTaskInfo(taskDiv);
+        taskAddClickHandler(taskDiv, infoDiv);
 
-    //cleanup
-    addTask.style.visibility = 'visible';
-    taskForm.style.visibility = 'hidden';
-    taskInput.value = '';
-    descriptionInput.value = '';
-    priorityInput.value = '';
-    inbox.style.marginTop = '-120px';
-    //print some basic info (helps during dev)
-    let taskInfo = (`Task name: ${task.name}, folder name: ${task.getFolder()}, date: ${task.getDate()}, priority: ${task.getPriority()}, description: ${task.getDescription().substring(0, 20)}`);
-    console.log(taskInfo);
-    // console.log(inboxTaskArray);
+        //edit and delete buttons
+        editP.addEventListener('click', function(){
+            editP.style.color = 'red'
+        });
+
+        closeP.addEventListener('click', function(){
+
+            for(let x of projectArray)
+                if(x.getName() === task.getFolder())
+                    projectArray.delete(x);
+
+            taskArray.delete(task);
+            taskArrayDiv.delete(taskDiv);
+            inbox.removeChild(taskDiv);
+        });
+
+        //cleanup
+        addTask.style.visibility = 'visible';
+        taskForm.style.visibility = 'hidden';
+        taskInput.value = '';
+        descriptionInput.value = '';
+        priorityInput.value = '';
+        inbox.style.marginTop = '-120px';
+        //print some basic info (helps during dev)
+        let taskInfo = (`Task name: ${task.name}, folder name: ${task.getFolder()}, date: ${task.getDate()}, priority: ${task.getPriority()}, description: ${task.getDescription().substring(0, 20)}`);
+        console.log(taskInfo);
+        // console.log(inboxTaskArray);
+    }
 }
 
 //Project functions
@@ -164,7 +194,7 @@ function greenButton1Handler(){
     projectDiv.classList.add('projectDiv');
 
     //
-    projectArray.push(project);
+    projectArray.add(project);
     projectInbox.appendChild(projectDiv);
 
     //open the project tasks
@@ -299,4 +329,10 @@ function showTodayTasks(){
         if(taskArray[i].getDate() == today){
             inbox.appendChild(taskArrayDiv[i]);
         }
+}
+
+function deleteTask(task, taskDiv){
+
+
+
 }

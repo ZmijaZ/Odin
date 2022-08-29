@@ -49,8 +49,8 @@ function Task(text){
 function Project(text){
 
     let name = text;
-    const projectTasks = [];
-    const projectTasksDiv = [];
+    const projectTasks = new Set();
+    const projectTasksDiv = new Set();
 
     function setName(x){
         name = x;
@@ -60,8 +60,12 @@ function Project(text){
     }
 
     function addTask(task, taskDiv){
-        projectTasks.push(task);
-        projectTasksDiv.push(taskDiv);
+        projectTasks.add(task);
+        projectTasksDiv.add(taskDiv);
+    }
+    function removeTask(task, taskDiv){
+        projectTasks.delete(task);
+        projectTasksDiv.delete(taskDiv);
     }
 
     return {setName, getName, projectTasks, projectTasksDiv, addTask}

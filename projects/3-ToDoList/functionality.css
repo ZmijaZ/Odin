@@ -103,12 +103,44 @@ form textarea{
     font-size: 18px;
     letter-spacing: 1px;
     word-spacing: 1px;
+}
+
+.textDiv{
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
+.textDiv .closeP{
+
+    color: rgb(255, 65, 65);
+}
+
+.textDiv .editP{
+
+    color: lightskyblue;
+}
+
+.textDiv .editP:hover{
+    color:rgb(66, 175, 243);
+}
+
+.textDiv .closeP:hover{
+
+    color: red;
+}
+
+
+
+.taskDiv div{
+
+    position: relative;
+    
+
+    padding: 5px;
+}
 
 
 .taskDiv #taskP{
