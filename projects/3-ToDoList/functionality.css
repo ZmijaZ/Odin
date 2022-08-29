@@ -103,7 +103,13 @@ form textarea{
     font-size: 18px;
     letter-spacing: 1px;
     word-spacing: 1px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
+
+
 
 .taskDiv #taskP{
 
@@ -226,4 +232,7 @@ form textarea{
 
     word-break: break-all;
     font-size: 18px;
+
 }
+
+

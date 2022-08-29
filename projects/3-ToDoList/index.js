@@ -7,6 +7,7 @@ const addTask = document.querySelector("#addTask");
 const addProject = document.querySelector('#addProject');
 const h1 = document.querySelector('#h1');
 const inboxDiv = document.querySelector('#inboxDiv');
+const todayDiv = document.querySelector('#todayDiv');
 
 //Task
 const taskForm = document.querySelector('#taskForm');
@@ -45,12 +46,15 @@ greenButton1.addEventListener('click', greenButton1Handler);
 inboxDiv.addEventListener('click', function(){
 
     h1.textContent = 'Inbox';
+    folderInput.value = 'Inbox';
     showProjectTasks();
+});
 
-})
+todayDiv.addEventListener('click', showTodayTasks)
 
 //extra dataStructures
-const inboxTaskArray = [];
+const taskArray = [];
+const taskArrayDiv = [];
 const projectArray = [];
 
 let inboxProject = Project('Inbox');
@@ -72,6 +76,11 @@ function closeTaskInput(){
     taskForm.style.visibility = 'hidden';
 
     inbox.style.marginTop = '-120px';
+
+    taskInput.value = '';
+    descriptionInput.value = '';
+    priorityInput.value = '';
+    folderInput.value = '';
 }
 
 function greenButtonHandler(){
@@ -83,16 +92,28 @@ function greenButtonHandler(){
     task.setDescription(descriptionInput.value);
     task.setFolder(folderInput.value);
 
-    inboxTaskArray.push(task);
+    taskArray.push(task);
 
     //create taskDiv
     let taskDiv = document.createElement('div');
     let taskP = document.createElement('p');
     taskP.textContent = task.getName();
     taskP.id = 'taskP';
+        //extra functionality
+    const editDiv = document.createElement('div');
+    const editP = document.createElement('span');
+    const closeP = document.createElement('span');
+    editP.textContent = 'E';
+    closeP.textContent = 'X';
+
+    editDiv.appendChild(editP);
+    editDiv.appendChild(closeP);
+
+    taskArrayDiv.push(taskDiv);
 
     taskDiv.classList.add('taskDiv');
     taskDiv.appendChild(taskP);
+    taskDiv.appendChild(editDiv);
 
     //
     addTaskToProject(task, taskDiv);
@@ -109,6 +130,8 @@ function greenButtonHandler(){
     addTask.style.visibility = 'visible';
     taskForm.style.visibility = 'hidden';
     taskInput.value = '';
+    descriptionInput.value = '';
+    priorityInput.value = '';
     inbox.style.marginTop = '-120px';
     //print some basic info (helps during dev)
     let taskInfo = (`Task name: ${task.name}, folder name: ${task.getFolder()}, date: ${task.getDate()}, priority: ${task.getPriority()}, description: ${task.getDescription().substring(0, 20)}`);
@@ -167,20 +190,27 @@ function addTaskInfo(task){
     const infoDescription = document.createElement('p');
     const infoFolder = document.createElement('p');
 
-    infoDate.textContent = `Date: ${dateInput.value ? dateInput.value : 'none'}`;
-    infoPriority.textContent = `Priority: ${priorityInput.value ? priorityInput.value : 'none'}`;
-    infoDescription.textContent = `Description: ${descriptionInput.value ? descriptionInput.value : 'none'}`;
-    infoFolder.textContent = `Project: ${folderInput.value ? folderInput.value : 'none'}`;
+    const dateSpan = document.createElement('span');
+    const prioritySpan = document.createElement('span');
+    const descriptionSpan = document.createElement('span');
+    const folderSpan = document.createElement('span');
+    //text
+    dateSpan.textContent = 'Date:';
+    prioritySpan.textContent = 'Priority:';
+    descriptionSpan.textContent = 'Description:';
+    folderSpan.textContent = 'Folder:';
+
+    infoDate.textContent = `${dateSpan.textContent} ${dateInput.value ? dateInput.value : 'none'}`;
+    infoPriority.textContent = `${prioritySpan.textContent} ${priorityInput.value ? priorityInput.value : 'none'}`;
+    infoDescription.textContent = `${descriptionSpan.textContent} ${descriptionInput.value ? descriptionInput.value : 'none'}`;
+    infoFolder.textContent = `${folderSpan.textContent} ${folderInput.value ? folderInput.value : 'none'}`;
 
     //append
-   
     infoDiv.appendChild(infoDescription);
     infoDiv.appendChild(infoPriority);
     infoDiv.appendChild(infoDate);
-    
     infoDiv.appendChild(infoFolder);
     
-
     task.appendChild(infoDiv);
         
     //style
@@ -217,6 +247,7 @@ function projectAddClickHandler(project, projectDiv){
     projectDiv.addEventListener('click', function(){
 
         h1.textContent = project.getName();
+        folderInput.value = h1.textContent;
 
         showProjectTasks();
     })
@@ -250,4 +281,22 @@ function showProjectTasks(){
 
         }
     }
+}
+
+function showTodayTasks(){
+
+    h1.textContent = 'Today';
+    inbox.innerHTML = '';
+
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    today = `${yyyy}-${mm}-${dd}`;
+
+    let n = taskArray.length;
+    for(let i = 0; i<n; i++)
+        if(taskArray[i].getDate() == today){
+            inbox.appendChild(taskArrayDiv[i]);
+        }
 }
