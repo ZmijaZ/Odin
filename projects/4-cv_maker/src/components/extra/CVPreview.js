@@ -6,7 +6,7 @@ function CVPreview(props){
 
     return(
 
-        <Content personalInfo = {cv.personalInfo} contactInfo = {cv.contactInfo}></Content>
+        <Content personalInfo = {cv.personalInfo} contactInfo = {cv.contactInfo} schoolInfo = {cv.schoolInfo} jobInfo = {cv.jobInfo}></Content>
 
     )
 }
