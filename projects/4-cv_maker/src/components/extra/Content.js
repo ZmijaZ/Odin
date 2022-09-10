@@ -14,9 +14,9 @@ function Content(props){
                     </section>
 
                     <section id = 'schoolRight'>
-                        <h3 id = 'h3Bold'>{newItem.schoolName}</h3>
+                        <h3 id = 'h3Bold'>{newItem.schoolName + ', ' + newItem.city}</h3>
                         <h3>Subject: {newItem.major}</h3>
-                        <h3>Degree {newItem.degree}</h3>
+                        <h3>Degree: {newItem.degree}</h3>
                     </section>
                 </div>
             )
@@ -51,7 +51,7 @@ function Content(props){
             <div className = 'contentBody'>
 
                 <div className = 'contact'>
-                    <img src = {personalInfo.photo} alt = 'face' width = '150px'></img>
+                    <img src = {personalInfo.photo} alt = 'face' width = '175px'></img>
                     <h2>Contact</h2>
                     <section>
                         <h3>{contactInfo.phoneNumber}</h3>

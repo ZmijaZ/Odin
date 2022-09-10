@@ -1,28 +1,25 @@
 .main .content {
 
-    background-color: orange;
+    background-color: lightgray;
     border: none;
-    border-radius: 10px;
 
-    height: 1000px;
+    height: 297mm;
+    width: 210mm;
+
+    /* has to have (top, etc.) in order to work properly */
+    position: sticky; 
+    top: 10px;
 
 }
 
 .main .content .contentHeader {
 
-    background-color: blueviolet;
+    background-color: blue;
     color: white;
     height: 100px;
     padding: 10px;
 
     border: none;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-
-    margin-bottom: 35px;
-
-    position: relative;
-
 
 }
 
@@ -48,25 +45,32 @@
 
 .main .content .contentBody{
 
-    width: 100%;
+    width: 199.5mm;
     margin: auto;
     padding: 20px;
 
-    display: flex;
 
-    height: 750px;
+
+    display: flex;
+    height: 254.4mm;
 }
 
 .main .content .contact{
 
-    width: 21%;
+    width: 28%;
     background-color: gray;
-    padding-left: 2%;
+    padding-left: 3%;
 
+    height: 265mm;
+
+    position: relative;
+    left: -20px;
+    top: -20px
 }
 .main .content .contact img {
 
-    padding-top: 7%;
+    padding-top: 10%;
+    padding-left: 3%;
 }
 
 .main .content .contact h2 {
@@ -86,7 +90,6 @@
     position: relative;
     top: -30px;
     padding-left: 1%;
-
 }
 
 .main .content section h3{
@@ -101,14 +104,17 @@
 
 .main .content .info {
 
-    width: 70%;
-    background-color: aqua;
-    padding-left: 10px;
+    width: 66%;
+    background-color: lightgray;
+    padding-left: 15px;
+
+    height: 245mm;
 }
 
 .main .content .info h2 {
 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    color: rgb(39, 39, 199);
 }
 
 .main .content .info p{
@@ -116,6 +122,7 @@
     font-style: italic;
     margin-top: -17px;
     padding-left: 1%;
+    padding-right: 3%;
 }
 
 .main .info .schoolItem {
@@ -126,7 +133,7 @@
     width: 80%
 }
 .main .info #schoolLeft {
-    width: 30%
+    width: 35%
 }
 
 .main .info .jobItem {
@@ -143,6 +150,7 @@
 #schoolH2,
 #jobH2 {
     margin-bottom: 40px;
+    
 }
 #h3Bold{
     font-weight: bold;

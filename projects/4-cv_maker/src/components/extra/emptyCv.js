@@ -19,8 +19,9 @@ const emptyCv = {
         {
             id: uuidv4(),
             schoolName: "",
-            degree: "",
+            city: "",
             major: "",
+            degree: "",
             from: "",
             to: ""
         }
