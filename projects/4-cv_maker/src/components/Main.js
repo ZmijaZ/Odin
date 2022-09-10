@@ -11,12 +11,40 @@ function Main(){
     //personalInfoChange
     function onChangePersonal(e){
 
-        const {name, value} = e.target;
+        const {name, value, type} = e.target;
+
+        if(type === 'file'){
+            handleChangeFile(e);
+            return;
+        }
 
         setCv(function(prevState){
             return({...prevState, personalInfo: {...prevState.personalInfo, [name]: value}});
         })
     }
+
+    //IMPORTANT
+        const handleChangeFile = (e) => {
+        const { name } = e.target
+        const file = e.target.files[0]
+        if (!file) return
+
+        const reader = new FileReader()
+        reader.onload = () => {
+        setCv((prevState) => ({
+            ...prevState,
+            personalInfo: {
+            ...prevState.personalInfo,
+            [name]: reader.result,
+            },
+        }))
+        }
+        reader.readAsDataURL(file)
+    }
+    //---
+
+
+
     function onChangeContact(e){
 
         const {name, value} = e.target;
