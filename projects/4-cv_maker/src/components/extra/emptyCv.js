@@ -7,7 +7,8 @@ const emptyCv = {
         firstName: "",
         lastName: "",
         title: "",
-        photo: emptyAvatar
+        photo: emptyAvatar,
+        aboutMe: ""
     },
     contactInfo: {
         phoneNumber: "",
@@ -18,6 +19,7 @@ const emptyCv = {
         {
             id: uuidv4(),
             schoolName: "",
+            degree: "",
             major: "",
             from: "",
             to: ""

@@ -1,4 +1,5 @@
 
+
 function Content(props){
 
     const {personalInfo, contactInfo, schoolInfo, jobInfo} = props;
@@ -6,10 +7,17 @@ function Content(props){
         const schoolItems = schoolInfo.map(function(newItem){
 
             return(
-                <div key = {newItem.id}>
-                    <h2>{newItem.schoolName}</h2>
-                    <h3>{newItem.major}</h3>
-                    <h3>{`from: ${newItem.from} to: ${newItem.to} `}</h3>
+                <div className="schoolItem" key = {newItem.id}>
+
+                    <section id = 'schoolLeft'>
+                        <h3>{`${newItem.from} - ${newItem.to} `}</h3>
+                    </section>
+
+                    <section id = 'schoolRight'>
+                        <h3 id = 'h3Bold'>{newItem.schoolName}</h3>
+                        <h3>Subject: {newItem.major}</h3>
+                        <h3>Degree {newItem.degree}</h3>
+                    </section>
                 </div>
             )
         })
@@ -17,26 +25,55 @@ function Content(props){
         const jobItems = jobInfo.map(function(newItem){
 
             return(
-                <div key = {newItem.id}>
-                    <h2>{newItem.companyName}</h2>
-                    <h3>{newItem.title}</h3>
-                    <h3>{`from: ${newItem.from} to: ${newItem.to} `}</h3>
+                <div className="jobItem" key = {newItem.id}>
+
+                    <section id = 'jobLeft'>
+                        <h3>{`${newItem.from} - ${newItem.to} `}</h3>
+                    </section>
+
+                    <section id = 'jobRight'>
+                        <h3 id = 'h3Bold'>{newItem.companyName}</h3>
+                        <h3>{newItem.title}</h3>
+                    </section>
                 </div>
             )
         })
 
     return(
 
-        <div>
-            <h1>{personalInfo.firstName + ' ' + personalInfo.lastName}</h1>
-            <h2>{personalInfo.title}</h2>
-            <img src = {personalInfo.photo} alt = 'face'></img>
-            <br></br>
-            <h3>{contactInfo.email + ' ' + contactInfo.phoneNumber}</h3>
-            <h3>{contactInfo.address}</h3>
+        <div className = 'content'>
 
-            {schoolItems}
-            {jobItems}
+            <div className = 'contentHeader'>
+                <h1 id = 'name'>{personalInfo.firstName + ' ' + personalInfo.lastName}</h1>
+                <h2>{personalInfo.title}</h2>
+            </div>
+            
+            <div className = 'contentBody'>
+
+                <div className = 'contact'>
+                    <img src = {personalInfo.photo} alt = 'face' width = '150px'></img>
+                    <h2>Contact</h2>
+                    <section>
+                        <h3>{contactInfo.phoneNumber}</h3>
+                        <h3>{contactInfo.email} </h3>
+                        <h3>{contactInfo.address}</h3>
+                    </section>
+                </div>
+
+                <div className = 'info'>
+                    <h2>About me</h2>
+                    <p>{personalInfo.aboutMe}</p>
+
+                    <h2 id = 'schoolH2'>School info</h2>
+                    {schoolItems}
+
+                    <h2 id = 'jobH2'>Job info</h2>
+                    {jobItems}
+                </div>
+
+            </div>
+
+            
 
         </div>
     )

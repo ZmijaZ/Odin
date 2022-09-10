@@ -12,7 +12,7 @@ function JobItem(props){
             <Input type = 'text' name = 'from' value = {jobItemInfo.from} placeholder = 'From' onChange = {function(e) {return(onChange(e, id))}}></Input>
             <Input type = 'text' name = 'to' value = {jobItemInfo.to} placeholder = 'To' onChange = {function(e) {return(onChange(e, id))}}></Input>
 
-            <button onClick = {function(){return onDelete(id)}}>Delete job</button>
+            <button className="deleteButton" onClick = {function(){return onDelete(id)}}>Delete job</button>
          
 
         </div>

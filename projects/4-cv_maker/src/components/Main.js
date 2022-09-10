@@ -4,6 +4,9 @@ import { CVPreview } from "./extra/CVPreview";
 import { emptyCv } from "./extra/emptyCv";
 import { Form } from "./forms/Form";
 
+import '../styles/form.css'
+import '../styles/content.css'
+
 function Main(){
 
     const [cv, setCv] = useState(emptyCv);
@@ -123,8 +126,8 @@ function Main(){
 
     return(
 
-        <div>
-            <Form cv = {cv} onChangePersonal = {onChangePersonal} onChangeContact = {onChangeContact} onChangeSchool = {onChangeSchool} onChangeJob = {onChangeJob}
+        <div className = 'main'>
+            <Form id = 'form' cv = {cv} onChangePersonal = {onChangePersonal} onChangeContact = {onChangeContact} onChangeSchool = {onChangeSchool} onChangeJob = {onChangeJob}
             handleAddSchool = {handleAddSchool} handleDeleteSchool = {handleDeleteSchool} handleAddJob = {handleAddJob} handleDeleteJob = {handleDeleteJob}></Form>
             <CVPreview cv = {cv}></CVPreview>
         </div>

@@ -1,0 +1,149 @@
+.main .content {
+
+    background-color: orange;
+    border: none;
+    border-radius: 10px;
+
+    height: 1000px;
+
+}
+
+.main .content .contentHeader {
+
+    background-color: blueviolet;
+    color: white;
+    height: 100px;
+    padding: 10px;
+
+    border: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    margin-bottom: 35px;
+
+    position: relative;
+
+
+}
+
+.main .content .contentHeader #name {
+
+    font-size: 40px;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+
+    position: relative;
+    top: -25px;
+    left: 20px;
+}
+
+.main .content .contentHeader h2 {
+
+    position: relative;
+    top: -50px;
+    left: 20px;
+
+    font-size: 22px;
+}
+
+.main .content .contentBody{
+
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+
+    display: flex;
+
+    height: 750px;
+}
+
+.main .content .contact{
+
+    width: 21%;
+    background-color: gray;
+    padding-left: 2%;
+
+}
+.main .content .contact img {
+
+    padding-top: 7%;
+}
+
+.main .content .contact h2 {
+
+    color: blue;
+    width: fit-content;
+
+    letter-spacing: 1px;
+    word-spacing: 2px;
+
+    border-bottom: 2px solid black;
+    position: relative;
+    top: -20px;
+}
+.main .content section {
+
+    position: relative;
+    top: -30px;
+    padding-left: 1%;
+
+}
+
+.main .content section h3{
+
+    color: rgb(29, 29, 29);
+    margin-bottom: 3px;
+    margin-top: 0px;
+
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.main .content .info {
+
+    width: 70%;
+    background-color: aqua;
+    padding-left: 10px;
+}
+
+.main .content .info h2 {
+
+    margin-bottom: 20px;
+}
+
+.main .content .info p{
+
+    font-style: italic;
+    margin-top: -17px;
+    padding-left: 1%;
+}
+
+.main .info .schoolItem {
+    display: flex;
+    justify-content: space-around;
+}
+.main .info #schoolRight {
+    width: 80%
+}
+.main .info #schoolLeft {
+    width: 30%
+}
+
+.main .info .jobItem {
+    display: flex;
+    justify-content: space-around;
+}
+.main .content #jobRight {
+    width: 80%
+}
+.main .info #jobLeft {
+    width: 30%
+}
+
+#schoolH2,
+#jobH2 {
+    margin-bottom: 40px;
+}
+#h3Bold{
+    font-weight: bold;
+}

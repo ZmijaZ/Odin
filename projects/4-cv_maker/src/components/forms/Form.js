@@ -9,7 +9,7 @@ function Form(props){
 
     return(
 
-        <div>
+        <div className = 'form'>
             <Personal personalInfo = {cv.personalInfo} onChange = {onChangePersonal}></Personal>
             <Contact contactInfo = {cv.contactInfo} onChange = {onChangeContact}></Contact>
             <School schoolInfo = {cv.schoolInfo} onChange = {onChangeSchool} onAdd = {handleAddSchool} onDelete = {handleDeleteSchool}></School>
