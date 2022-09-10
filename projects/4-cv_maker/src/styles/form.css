@@ -1,5 +1,7 @@
 *{
-    font-family: 'Poppins', sans-serif;
+
+    /* google fonts, check index.html */
+    font-family: 'Poppins', sans-serif; 
 }
 
 .main{
@@ -92,3 +94,32 @@ main .form button:active {
 
 }
 
+#printButton,
+#exampleButton,
+#resetButton{
+
+    width: 92%;
+
+    position: relative;
+    left: 5%;
+}
+
+#printButton{
+    background-color: rgb(45, 231, 45);
+}
+#exampleButton{
+    background-color: rgb(230, 101, 50);
+}
+#resetButton {
+    background-color: rgb(230, 45, 45)
+}
+
+#printButton:hover{
+    background-color: rgb(45, 231, 45, 0.5);
+}
+#exampleButton:hover {
+    background-color: rgb(230, 101, 50, 0.7);
+}
+#resetButton:hover {
+    background-color: rgb(230, 45, 45, 0.7);
+}

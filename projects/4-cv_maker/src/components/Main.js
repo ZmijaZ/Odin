@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from 'uuid'
+import { useRef, useState } from "react";
+import { v4 as uuidv4 } from 'uuid' //npm install uuidv4
+import { useReactToPrint } from 'react-to-print' //npm install react-to-print
 import { CVPreview } from "./extra/CVPreview";
 import { emptyCv } from "./extra/emptyCv";
 import { Form } from "./forms/Form";
 
 import '../styles/form.css'
 import '../styles/content.css'
+import { exampleCv } from "./extra/exampleCv";
 
 function Main(){
 
@@ -28,24 +30,23 @@ function Main(){
 
     //IMPORTANT
         const handleChangeFile = (e) => {
-        const { name } = e.target
-        const file = e.target.files[0]
-        if (!file) return
+            const { name } = e.target
+            const file = e.target.files[0]
+            if (!file) return
 
-        const reader = new FileReader()
-        reader.onload = () => {
-        setCv((prevState) => ({
-            ...prevState,
-            personalInfo: {
-            ...prevState.personalInfo,
-            [name]: reader.result,
-            },
-        }))
+            const reader = new FileReader()
+            reader.onload = () => {
+            setCv((prevState) => ({
+                ...prevState,
+                personalInfo: {
+                ...prevState.personalInfo,
+                [name]: reader.result,
+                },
+            }))
+            }
+            reader.readAsDataURL(file)
         }
-        reader.readAsDataURL(file)
-    }
     //---
-
 
 
     function onChangeContact(e){
@@ -121,6 +122,19 @@ function Main(){
             return({...prevState, jobInfo: [...jobItems]})
         })
 
+    }///////////////////////////////////////////////////////
+
+    //buttonFunctions
+    const componentRef = useRef()
+
+    // throws warning because react-to-print uses findDOMNode
+    const handlePrint = useReactToPrint({ content: () => componentRef.current })
+
+    function handleExample(){
+        setCv(exampleCv);
+    }
+    function handleReset(){
+        setCv(emptyCv);
     }
 
 
@@ -128,7 +142,12 @@ function Main(){
 
         <div className = 'main'>
             <Form id = 'form' cv = {cv} onChangePersonal = {onChangePersonal} onChangeContact = {onChangeContact} onChangeSchool = {onChangeSchool} onChangeJob = {onChangeJob}
-            handleAddSchool = {handleAddSchool} handleDeleteSchool = {handleDeleteSchool} handleAddJob = {handleAddJob} handleDeleteJob = {handleDeleteJob}></Form>
+
+                handleAddSchool = {handleAddSchool} handleDeleteSchool = {handleDeleteSchool} handleAddJob = {handleAddJob} handleDeleteJob = {handleDeleteJob} 
+
+                handleExample = {handleExample} handleReset = {handleReset} handlePrint = {handlePrint}
+
+            ></Form>
             <CVPreview cv = {cv}></CVPreview>
         </div>
 

@@ -1,7 +1,7 @@
 //needed in order to useState in Main for cv
 import { v4 as uuidv4 } from 'uuid'
 import emptyAvatar from './empty_avatar.png'
-const emptyCv = {
+const exampleCv = {
 
     personalInfo: {
         firstName: "John",
@@ -37,4 +37,4 @@ const emptyCv = {
     ],
 }
 
-export {emptyCv}
+export {exampleCv}
