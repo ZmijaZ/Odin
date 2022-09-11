@@ -1,6 +1,5 @@
 import { Content } from "./Content";
 
-
 function CVPreview(props){
 
     const {cv} = props;

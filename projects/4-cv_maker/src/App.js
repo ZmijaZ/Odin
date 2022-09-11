@@ -1,9 +1,16 @@
+import React from "react";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
 import { Main } from "./components/Main";
 
 function App() {
   return (
     <div className="App">
-      <Main className = 'Main' > </Main>
+
+        <Header></Header>
+        <Main className = 'Main' > </Main>
+        <Footer></Footer>
+
     </div>
   );
 }
