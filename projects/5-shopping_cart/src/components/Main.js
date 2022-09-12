@@ -4,11 +4,14 @@ import { Header } from "./Header";
 import { CartView } from "./cart/CartView";
 import { items } from './store/items';
 
+import '../styles/main.css'
+
 const tmpCart = [];
 
 function Main(){
 
     const [cart, setCart] = useState([]);
+    const [fitems, setFitems] = useState(items);
 
     function addItemToCart(id){
         
@@ -66,12 +69,44 @@ function Main(){
 
     }
 
+    // function handleDeleteSchool(id){
+    //     setCv(function(prevState){
+
+    //         const schoolItems = prevState.schoolInfo.filter(function(newItem){
+    //             return id !== newItem.id;
+    //         })
+    //         return({...prevState, schoolInfo: [...schoolItems]});
+    //     })
+    // }
+
+
+    function filterItems(type){
+
+        const typeSet = new Set();
+        const types = [];
+
+        for(let item of items)
+            typeSet.add(item.type);
+        for(let x of typeSet)
+            types.push(x);
+
+        setFitems(function(){
+
+            const filteredItems = fitems.filter(function(newItem){
+                return type === newItem.type;
+            })
+            return ([...filteredItems])
+
+            console.log(filterItems)
+        })
+
+    }
 
     return (
         <div className = 'main'>
 
             
-            <RouteSwitch addItemToCart = {addItemToCart}></RouteSwitch>
+            <RouteSwitch items = {fitems} addItemToCart = {addItemToCart} filterItems = {filterItems}></RouteSwitch>
 
             <CartView cart = {cart} onAdd = {handleAdd} onRemove = {handleRemove}></CartView>
         </div>

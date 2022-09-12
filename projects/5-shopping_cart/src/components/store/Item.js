@@ -6,12 +6,16 @@ function Item(props){
     return(
         <div className = 'item'>
 
-            <img src = {itemInfo.photo} alt = 'loadFailed'></img>
-            <h3>{itemInfo.name}</h3>
+            <div className = 'imgDiv'>
+                <img src = {itemInfo.photo} alt = 'loadFailed' ></img>
+            </div>
+            <h3 id = 'itemName'>{itemInfo.name}</h3>
             <p>{itemInfo.description}</p>
-            <h4>{itemInfo.price}</h4>
 
-            <button onClick = {function(){return onClick(id)}}>Add to cart</button>
+            <div className = 'lowerItemDiv'>
+                <h4>{itemInfo.price}</h4>
+                <button onClick = {function(){return onClick(id)}}>Add to cart</button>
+            </div>
 
         </div>
     )

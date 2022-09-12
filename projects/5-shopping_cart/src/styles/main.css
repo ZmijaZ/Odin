@@ -1,0 +1,164 @@
+
+.main{
+
+}
+
+.store{
+
+    width: 80%;
+    margin: auto;
+}
+
+.store #storeH1{
+    
+    text-align: center;
+    font-size: 35px;
+
+}
+
+.store #flex{
+
+    display: flex;
+    justify-content: space-around;
+    gap: 20%;
+
+}
+
+.store .storeFilter{
+    
+    color: green;
+
+    width: 17%;
+    margin-right: -15%;
+    
+
+    height: 250px;
+}
+
+.store .storeFilter h1 {
+
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 45px;
+
+    background-color: antiquewhite;
+    
+
+    border-radius: 5px;
+}
+
+.store .storeFilter .type{
+
+    
+    font-size: 17px;
+
+    border-radius: 5px;
+
+    
+}
+
+.store .storeFilter .type:hover {
+
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 18px;
+    transition: 0.75s;
+
+
+    padding-left: 20px;
+    background-color: antiquewhite;
+    
+}
+
+.store .storeFilter h2{
+    padding-left: 10%;
+}
+
+.store .listItems{
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 9%;
+
+    margin-bottom: 50px;
+}
+
+.store .item {
+
+    border: 1px solid gray;
+    width: 210px;
+
+    min-width: 200px;
+
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+
+    margin-bottom: -50px;
+}
+
+.store .item #itemName{
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+
+
+    height: 50px;
+
+}
+
+.store .item .imgDiv{
+
+    border-bottom: 2px solid lightgray;
+
+    width: 100%;
+    margin: auto;
+}
+
+.store .item .imgDiv img{
+
+    min-width: 120px;
+    width: 125px;
+    height: 175px;
+
+    position: relative;
+    left: 20%;
+    padding-bottom: 10px;
+}
+
+.store .item p{
+
+    margin-top: -10px;
+}
+
+.store .item .lowerItemDiv{
+    
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.store .item button{
+
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    margin-top: -15px;
+    margin-bottom: 0px;
+
+    font-size: 20px;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    font-weight: 900;
+
+    background-color: black;
+    color: white;
+}
+
+.store .item button:hover{
+    cursor: pointer;
+    background-color: rgb(30, 30, 30)
+}
