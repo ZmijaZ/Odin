@@ -1,9 +1,13 @@
 import { RouteSwitch } from "../pages/RouteSwitch";
+import { Header } from "./Header";
 
 function Main(){
 
     return (
-        <RouteSwitch></RouteSwitch>
+        <div className = 'main'>
+
+            <RouteSwitch></RouteSwitch>
+        </div>
     )
 }
 
