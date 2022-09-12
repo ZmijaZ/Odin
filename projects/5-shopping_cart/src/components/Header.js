@@ -1,6 +1,5 @@
 
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 import '../styles/header.css'
 
@@ -10,8 +9,8 @@ function Header(){
 
     function openCart(){
         if(showCart){
-            
             setShowCart(!showCart);
+
         }else{
             setShowCart(!showCart);
             

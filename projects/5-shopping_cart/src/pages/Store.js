@@ -1,23 +1,16 @@
-import { items } from "../components/store/items"
-import { ListItems } from "../components/store/ListItems"
+import { useState } from "react";
+import { items } from "../components/store/items";
+import { ListItems } from "../components/store/ListItems";
 
-function Store(){
+function Store(props){
 
-    function handleClick(id){
-
-        const itemList = items.map(function(newItem){
-            if(id === newItem.id){
-                console.log(newItem.name);
-            }
-        })
-
-    }
+    const {addItemToCart} = props;
 
     return(
         <div className = 'store'>
             <h1>Store</h1>
 
-            <ListItems list = {items} onClick = {handleClick}></ListItems>
+            <ListItems list = {items} onClick = {addItemToCart}></ListItems>
         </div>
     )
 
