@@ -68,7 +68,7 @@ function Project(text){
         projectTasksDiv.delete(taskDiv);
     }
 
-    return {setName, getName, projectTasks, projectTasksDiv, addTask}
+    return {setName, getName, projectTasks, projectTasksDiv, addTask, removeTask}
 
 }
 

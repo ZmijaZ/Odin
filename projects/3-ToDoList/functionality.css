@@ -97,7 +97,6 @@ form textarea{
 
 .taskDiv{
 
-    padding: 1px;
     border-radius: 10px;
 
     font-size: 18px;
@@ -111,6 +110,20 @@ form textarea{
     align-items: center;
     justify-content: space-between;
 
+}
+
+.textDiv span{
+    vertical-align: middle;
+}
+
+.textDiv p{
+
+    margin: 0px;
+}
+
+.editDiv{
+
+    background-color: red;
 }
 
 .textDiv .closeP{
@@ -131,8 +144,6 @@ form textarea{
 
     color: red;
 }
-
-
 
 .taskDiv div{
 
@@ -238,9 +249,42 @@ form textarea{
 
 .projectDiv{
 
-    padding: 5px;
     margin-bottom: 5px;
+    padding: 5px;
+    width: 110%;
 
+    font-weight: 900;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.editProject{
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.editProject span{
+
+    font-size: 15px;
+
+}
+
+.editProject .editP{
+    color: lightskyblue;
+}
+.editProject .closeP{
+    color: rgb(255, 98, 98);
+}
+
+.editProject .editP:hover{
+    color:rgb(66, 175, 243);
+}
+.editProject .closeP:hover{
+    color: rgb(255, 65, 65);
 }
 
 .projectDiv:hover{
@@ -264,7 +308,6 @@ form textarea{
 
     word-break: break-all;
     font-size: 18px;
-
 }
 
 

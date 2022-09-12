@@ -147,8 +147,10 @@ function greenButtonHandler(){
         closeP.addEventListener('click', function(){
 
             for(let x of projectArray)
-                if(x.getName() === task.getFolder())
+                if(x.getName() === task.getFolder()){
                     projectArray.delete(x);
+                    x.removeTask(task, taskDiv);
+                }
 
             taskArray.delete(task);
             taskArrayDiv.delete(taskDiv);
@@ -186,28 +188,83 @@ function closeProjectInput(){
 
 function greenButton1Handler(){
 
-    let project = Project(projectInput.value);
+    if(projectInput.value == ''){
+        projectInput.style.border = '1px solid red';
+        projectInput.placeholder = 'ENTER NAME FIRST';
+        setTimeout(function(){
+            projectInput.style.border = '1px solid gray';
+            projectInput.placeholder = 'Enter task';
+        }, 1000)
+    }else if(greenButton1.innerText == 'Add'){
+        var project = Project(projectInput.value);
 
-    //createProjectDiv
-    let projectDiv = document.createElement('div');
-    projectDiv.textContent = project.getName();
-    projectDiv.classList.add('projectDiv');
+        //createProjectDiv
+        var projectDiv = document.createElement('div');
+        projectDiv.classList.add('projectDiv');
+        projectDiv.textContent = projectInput.value;
 
-    //
-    projectArray.add(project);
-    projectInbox.appendChild(projectDiv);
+        let editProject = document.createElement('div');
+        editProject.classList.add('editProject');
+        let editP = document.createElement('span');
+        editP.classList.add('editP');
+        let closeP = document.createElement('span');
+        closeP.classList.add('closeP');
+        editP.textContent = 'E';
+        closeP.textContent = 'X';
 
-    //open the project tasks
-    projectAddClickHandler(project, projectDiv);
+        editProject.appendChild(editP);
+        editProject.appendChild(closeP);
+        projectDiv.appendChild(editProject);
 
-    //add new option to project select
-    let option = new Option(projectInput.value, projectInput.value)
-    folderInput.appendChild(option);
+        //
+        projectArray.add(project);
+        projectInbox.appendChild(projectDiv);
 
-    //cleanup
-    addProject.style.visibility = 'visible';
-    projectForm.style.visibility = 'hidden';
-    projectInput.value = '';
+        //open the project tasks
+        projectAddClickHandler(project, projectDiv);
+
+        //add new option to project select
+        let option = new Option(projectInput.value, projectInput.value)
+        folderInput.appendChild(option);
+
+
+        //functionality (delete/edit)
+        closeP.addEventListener('click', function(){
+
+            h1.textContent = 'Inbox';//fix this, doesn't work
+
+            projectArray.delete(project);
+            projectInbox.removeChild(projectDiv);
+            folderInput.removeChild(option);
+
+            h1.textContent = 'Inbox';
+        }); 
+
+        editP.addEventListener('click', function(){
+
+            openProjectInput();
+            projectInput.value = project.getName();
+            greenButton1.innerText = 'Edit';
+
+        })
+
+        //cleanup
+        addProject.style.visibility = 'visible';
+        projectForm.style.visibility = 'hidden';
+        projectInput.value = '';
+
+        //EDIT
+        if (greenButton1.textContent == 'Edit'){
+            project.setName(projectInput.value);
+            projectDiv.textContent(projectInput.value);
+
+            console.log(projectInput.value);
+        }
+
+    }
+
+
+    
 }
 
 function addTaskInfo(task){
