@@ -13,6 +13,17 @@ function Main(){
     const [cart, setCart] = useState([]);
     const [fitems, setFitems] = useState(items);
 
+    const typeSet = new Set();
+    const types = ['all items'];
+
+    for(let item of items)
+        typeSet.add(item.type);
+    for(let x of typeSet)
+        types.push(x);
+
+    console.log(types)
+
+
     function addItemToCart(id){
         
         items.map(function(newItem){
@@ -82,22 +93,21 @@ function Main(){
 
     function filterItems(type){
 
-        const typeSet = new Set();
-        const types = [];
-
-        for(let item of items)
-            typeSet.add(item.type);
-        for(let x of typeSet)
-            types.push(x);
-
-        setFitems(function(){
-
-            const filteredItems = fitems.filter(function(newItem){
-                return type === newItem.type;
-            })
-            return ([...filteredItems])
-
-            console.log(filterItems)
+        types.map(function(newType){
+                if(newType === 'all items')
+                    setFitems(items);
+                else{
+                    if(newType === type){
+                        if(newType === type){
+                            console.log(type);
+                            const newItems = items.filter(function(newItem){
+                                return newItem.type === type;
+                            })
+                            setFitems(newItems);
+                        }
+                    }
+                }
+                
         })
 
     }
@@ -106,7 +116,7 @@ function Main(){
         <div className = 'main'>
 
             
-            <RouteSwitch items = {fitems} addItemToCart = {addItemToCart} filterItems = {filterItems}></RouteSwitch>
+            <RouteSwitch items = {fitems} addItemToCart = {addItemToCart} filterItems = {filterItems} types = {types}></RouteSwitch>
 
             <CartView cart = {cart} onAdd = {handleAdd} onRemove = {handleRemove}></CartView>
         </div>
