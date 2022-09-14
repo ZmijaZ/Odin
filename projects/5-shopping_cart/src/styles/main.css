@@ -5,7 +5,7 @@
 
 .store{
 
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
@@ -31,7 +31,6 @@
     width: 17%;
     margin-right: -15%;
     
-
     height: 250px;
 }
 
@@ -43,18 +42,14 @@
 
     background-color: antiquewhite;
     
-
     border-radius: 5px;
 }
 
 .store .storeFilter .type{
 
-    
     font-size: 17px;
 
     border-radius: 5px;
-
-    
 }
 
 .store .storeFilter .type:hover {
@@ -64,10 +59,8 @@
     padding-left: 18px;
     transition: 0.75s;
 
-
     padding-left: 20px;
     background-color: antiquewhite;
-    
 }
 
 .store .storeFilter h2{
@@ -79,7 +72,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 9%;
+    gap: 10%;
 
     margin-bottom: 50px;
 }

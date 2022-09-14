@@ -21,10 +21,10 @@ function Header(){
 
         <div className = 'header'>
             <h1>STORE NAME</h1>
-            <h1>Home</h1>
-            <h1>Store</h1>
-            <h1>About</h1>
-            <h1 onClick = {openCart}>Cart</h1>
+            <h2>Home</h2>
+            <h2>Store</h2>
+            <h2>About</h2>
+            <h2 onClick = {openCart}>Cart</h2>
         </div>
 
     )

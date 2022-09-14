@@ -13,7 +13,7 @@ function Item(props){
             <p>{itemInfo.description}</p>
 
             <div className = 'lowerItemDiv'>
-                <h4>{itemInfo.price}</h4>
+                <h4>${itemInfo.price}</h4>
                 <button onClick = {function(){return onClick(id)}}>Add to cart</button>
             </div>
 
