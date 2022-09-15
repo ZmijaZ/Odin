@@ -6,10 +6,10 @@ function CartView(props){
     const {cart, onAdd, onRemove, price, cartStyle, showCart} = props;
 
     const cartItems = cart.map(function(newItem){
-
-        return(
-            <CartItem key = {newItem.id} id = {newItem.id} cartItemInfo = {newItem} onAdd = {onAdd} onRemove = {onRemove}></CartItem>
-        )
+        if(newItem.cartCount)
+            return(
+                <CartItem key = {newItem.id} id = {newItem.id} cartItemInfo = {newItem} onAdd = {onAdd} onRemove = {onRemove}></CartItem>
+            )
     })
 
     return(

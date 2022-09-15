@@ -39,7 +39,7 @@ function Main(){
                 newItem.cartCount++;
                 setPrice(price+=parseFloat(newItem.price));
             }
-        })
+        return ('')})
 
         setCart([...tmpCart]);
     }
@@ -50,15 +50,7 @@ function Main(){
         
         return false;
     }
-    // function handleDeleteSchool(id){
-    //     setCv(function(prevState){
-
-    //         const schoolItems = prevState.schoolInfo.filter(function(newItem){
-    //             return id !== newItem.id;
-    //         })
-    //         return({...prevState, schoolInfo: [...schoolItems]});
-    //     })
-    // }
+    
 
     function filterItems(type){
 
@@ -84,8 +76,10 @@ function Main(){
 
     function handleAdd(id){
         cart.map(function(newItem){
-            if(id === newItem.id)
+            if(id === newItem.id){
                 newItem.cartCount++;
+                setPrice(price+=parseFloat(newItem.price))
+            }
                 console.log(newItem.price)
             return newItem;
         })
@@ -93,27 +87,32 @@ function Main(){
         setCart([...cart])
 
     }
+
+    //"hardCoding" handleRemove
+    const cartSet = new Set();
+    for(let x of cart)
+        cartSet.add(x);
+
     function handleRemove(id){
 
         cart.map(function(newItem){
             if(id === newItem.id){
                 if(newItem.cartCount === 1){
-                    console.log('doing')
-                    setCart(function(prevState){
-                        const newItems = prevState.filter(function(newItem){
-                            return id !== newItem.id
-                        })
-                        return ([...cart, newItems])
-                    })
-                }
-                else 
+                    for(let x of cartSet)
+                        if(x.id === id)
+                            cartSet.delete(x);
                     newItem.cartCount--;
+                    setPrice(price-=parseFloat(newItem.price));
+                    //"breaking point"
+                    let tmpArray = Array.from(cartSet);
+                    setCart(tmpArray);
+                }
+                else{
+                    newItem.cartCount--;
+                    setPrice(price-=parseFloat(newItem.price))
+                }
             }
-
-        })
-
-        setCart([...cart])
-
+        return ('')}  )
     }
 
     function handleShowCart(){
@@ -122,22 +121,21 @@ function Main(){
 
     useEffect(function(){
         return (function handleShowCart(){
-            if(cartV)
+            if(cartV){
                 setCartStyle({ display: 'none'});
-                
+
+            }
             else
                 setCartStyle({ display: 'block'})
-            
-            console.log(cartStyle)
+
         }) 
 
     }, [cartV])
     
 
-
     return (
         <div className = 'main'>
-            <RouteSwitch items = {fitems} addItemToCart = {addItemToCart} filterItems = {filterItems} types = {types} showCart = {handleShowCart}></RouteSwitch>
+            <RouteSwitch  items = {fitems} addItemToCart = {addItemToCart} filterItems = {filterItems} types = {types} showCart = {handleShowCart}></RouteSwitch>
 
             <CartView cart = {cart} price = {price} onAdd = {handleAdd} onRemove = {handleRemove} cartStyle = {cartStyle} showCart = {handleShowCart}></CartView>
         </div>
