@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { About } from './About'
 import { Home } from './Home'
 import { Store } from './Store'
 import LinkButton from "./LinkButton";
+
 
 import '../styles/header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -26,7 +27,7 @@ function RouteSwitch(props){
             </div>
             
             <Routes>
-                <Route path = '/' element = {<Home></Home>}></Route>
+                <Route path = '/' element = {<Home onClick = {function(){return <Link to = '/store'></Link>}}></Home>}></Route>
                 <Route path = '/store' element = {<Store items = {items} addItemToCart = {addItemToCart} filterItems = {filterItems} types = {types}></Store>}></Route>
                 <Route path = 'about' element = {<About></About>}></Route>
             </Routes>

@@ -19,7 +19,6 @@ function Item(props){
 
         </div>
     )
-
 }
 
 export {Item}

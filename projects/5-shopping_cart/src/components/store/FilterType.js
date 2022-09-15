@@ -8,7 +8,6 @@ function FilterType(props){
         <div className = 'type'>
             <h2 onClick = {function(){return onClick(id)}}>{type}</h2>
         </div>
-
     )
 }
 

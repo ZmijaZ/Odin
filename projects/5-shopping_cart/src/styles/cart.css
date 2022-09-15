@@ -1,6 +1,5 @@
 
 .cartView {
-
     background-color: black;
     width: 500px;
 
@@ -15,7 +14,6 @@
 }
 
 .cartView h2{
-
     color: white;
     text-align: center;
     font-size: 40px;
@@ -24,7 +22,6 @@
 }
 
 .cartItemList{
-
     width: 90%;
     margin: auto;
 }
@@ -37,7 +34,6 @@
 }
 
 .cartItemList .cartItem{
-
     display: flex;
     justify-content: space-between;
     gap: 20%;
@@ -52,7 +48,6 @@
 }
 
 .cartItemList .cartItem img{
-
     width: 100px;
     height: 130px;
  
@@ -64,7 +59,6 @@
 }
 
 .cartItemList .cartItem .cartItemText {
-
     border-left: 1px solid gray;
     padding-left: 5px;
     min-width: 150px;
@@ -72,7 +66,6 @@
 }
 
 .cartItemList .cartItem h5{
-
     letter-spacing: 1px;
     font-size: 18px;
 
@@ -80,7 +73,6 @@
 }
 
 .cartItemList .cartItem .cartItemButtons {
-    
     min-width: 75px;
 
     display: flex;
@@ -92,7 +84,6 @@
 }
 
 .cartItemList .cartItem button{
-
     padding: 10px;
     width: 30px;
     height: 30px;
@@ -122,16 +113,13 @@
 }
 
 .cartView .cartViewButtons{
-
     display: flex;
     justify-content: space-around;
     border-top: 1px solid white;
     padding: 10px;
-
 }
 
 .cartView .cartViewButtons button{
-
     padding: 10px;
     width: 40%;
 
@@ -148,24 +136,20 @@
 }
 
 .cartView .cartViewButtons #button1:hover{
-
     cursor: pointer;
     background-color: rgb(0, 128, 0, 0.8);
 }
 .cartView .cartViewButtons #button1:active {
-
     cursor: grab;
     background-color: rgb(0, 128, 0, 0.5);
 }
 
 .cartView .cartViewButtons #button2:hover {
-
     cursor: pointer;
     background-color: rgb(106, 198, 255, 0.8);
 }
 
 .cartView .cartViewButtons #button2:active {
-
     cursor: grab;
     background-color: rgb(106, 198, 255, 0.5);
 }

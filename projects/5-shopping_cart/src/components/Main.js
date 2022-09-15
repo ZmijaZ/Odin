@@ -24,9 +24,7 @@ function Main(){
         types.push(x);
     //////////////
     
-    
     function addItemToCart(id){
-        
         items.map(function(newItem){
             if(newItem.id === id){
                 if(!itemInCart(newItem)){
@@ -47,13 +45,10 @@ function Main(){
         for(let x of tmpCart)
             if(x === item)
                 return true;
-        
         return false;
     }
     
-
     function filterItems(type){
-
         types.map(function(newType){
                 if(newType === 'all items')
                     setFitems(items);
@@ -67,8 +62,7 @@ function Main(){
                             setFitems(newItems);
                         }
                     }
-                }
-                
+                }       
         return ('none')})
     }
     //total priceCart
@@ -85,8 +79,7 @@ function Main(){
         })
 
         setCart([...cart])
-
-    }
+    }////////////////
 
     //"hardCoding" handleRemove
     const cartSet = new Set();
@@ -94,13 +87,13 @@ function Main(){
         cartSet.add(x);
 
     function handleRemove(id){
-
         cart.map(function(newItem){
             if(id === newItem.id){
                 if(newItem.cartCount === 1){
-                    for(let x of cartSet)
+                    for(let x of cartSet){
                         if(x.id === id)
                             cartSet.delete(x);
+                    }
                     newItem.cartCount--;
                     setPrice(price-=parseFloat(newItem.price));
                     //"breaking point"
@@ -113,7 +106,7 @@ function Main(){
                 }
             }
         return ('')}  )
-    }
+    }///////////////////////////
 
     function handleShowCart(){
         setCartV(!cartV);

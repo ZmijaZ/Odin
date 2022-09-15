@@ -109,7 +109,6 @@ const items = [
         type: 'cap',
         cartCount: 0,
     },
-
 ]
 
 export {items}
