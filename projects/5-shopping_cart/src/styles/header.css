@@ -14,7 +14,6 @@
 }
 
 .header h1, h2{
-
     padding: 0.5% 1% 0.5% 1%;
     font-size: 35px;
 
@@ -30,25 +29,20 @@
     align-items: center;
     margin-right: 3%;
 }
-
 .header h2:hover{
     cursor: pointer;
     color: rgb(128, 1, 128, 0.8);
     background-color: rgba(98, 160, 160, 0.3);
-
 }
 .header h1:hover{
     cursor: pointer;
 }
 
 .link{
-
     text-decoration: none;
     color: rgb(128, 1, 128)
 }
-
 .link:active {
-
     color: rgb(110, 1, 110)
 }
 
@@ -56,8 +50,6 @@
     background-image: linear-gradient(#e66465, #9198e5);
     width: 100%;
     margin: auto;
-
-
     height: 100vh;
 
     position: absolute;
@@ -66,7 +58,6 @@
 }
 
 .home button{
-
     padding: 30px;
     font-size: 40px;
     font-weight: 900;
@@ -83,7 +74,6 @@
     top: 45%;
     left: 40%;
 }
-
 .home button:hover {
     cursor: pointer;
     background-color: rgb(0, 0, 0, 0.9)
@@ -93,7 +83,6 @@
 }
 
 .home h1{
-
     text-align: center;
  
     position: relative;
@@ -108,13 +97,10 @@
 }
 
 .home h1 span{
-
     color: aqua;
-
 }
 
 .about {
-
     background-image: linear-gradient(#e66465,#9198e5);
     height: 38vw;
     padding: 7px;
@@ -131,12 +117,9 @@
     display: flex;
     justify-content: space-around;
 
-
     height: 270px;
-    
 }
 .about .aboutDiv1 h1{
-
     font-size: 100px;
     color: rgb(48, 78, 78);
 }
@@ -144,7 +127,6 @@
     color: rgb(48, 78, 78);
 }
 .about .aboutDiv1 a:hover{
-
     transition: 0.4s;
     font-size: 110px;
     position: relative;
@@ -158,7 +140,6 @@
     margin: auto;
     text-align: center;
 }
-
 .about .aboutDiv2 h2{
     font-size: 40px;
 }
