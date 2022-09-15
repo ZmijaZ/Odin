@@ -1,8 +1,13 @@
 
-function Home(){
+
+function Home(props){
+
+    const {onClick} = props;
 
     return(
-        <h1>Home</h1>
+        <div className="home">
+            <button onClick = {onClick}>SHOP NOW</button>
+        </div>
     )
 }
 

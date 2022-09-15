@@ -5,7 +5,10 @@ import { Store } from './Store'
 import LinkButton from "./LinkButton";
 
 import '../styles/header.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
+const shoppingCart = <FontAwesomeIcon icon = {faShoppingCart}></FontAwesomeIcon>
 
 function RouteSwitch(props){
 
@@ -19,7 +22,7 @@ function RouteSwitch(props){
                 <h2><LinkButton link = '/' text = 'Home'></LinkButton></h2>
                 <h2><LinkButton link = '/store' text = 'Store'></LinkButton></h2>
                 <h2><LinkButton link = '/about' text = 'About'></LinkButton></h2>
-                <h2 onClick = {showCart}>Cart</h2>
+                <h2 onClick = {showCart}>{shoppingCart}</h2>
             </div>
             
             <Routes>

@@ -50,3 +50,93 @@
 
     color: rgb(110, 1, 110)
 }
+
+.home {
+    background-image: linear-gradient(#e66465, #9198e5);
+    width: 100%;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.home button{
+
+    padding: 30px;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    height: 130px;
+
+    background-color: black;
+    color: white;
+
+    border: 2px solid white;
+    border-radius: 10px;
+
+    position: relative;
+    top: 45%;
+}
+
+.home button:hover {
+    cursor: pointer;
+    background-color: rgb(0, 0, 0, 0.9)
+}
+.home button:active{
+    background-color: rgb(0, 0, 0, 0.76);
+}
+
+.about {
+
+    background-image: linear-gradient(#e66465,#9198e5);
+    height: 38vw;
+    padding: 7px;
+
+    position: absolute;
+    left: 0px;
+    width: 99.2%;
+}
+
+.about .aboutDiv1{
+    width: 50%;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-around;
+
+
+    height: 270px;
+    
+}
+.about .aboutDiv1 h1{
+
+    font-size: 100px;
+    color: rgb(48, 78, 78);
+}
+.about .aboutDiv1 a:visited {
+    color: rgb(48, 78, 78);
+}
+.about .aboutDiv1 a:hover{
+
+    transition: 0.4s;
+    font-size: 110px;
+    position: relative;
+
+    color: rgb(26, 46, 46);
+    cursor: pointer;
+}
+
+.about .aboutDiv2{
+    width: 45%;
+    margin: auto;
+    text-align: center;
+}
+
+.about .aboutDiv2 h2{
+    font-size: 40px;
+}
+
+
+
