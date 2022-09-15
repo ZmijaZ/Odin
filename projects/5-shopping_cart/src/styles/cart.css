@@ -8,7 +8,10 @@
     top: 0px;
     right: 0px;
 
-    visibility: hidden;
+    display: none;
+    z-index: 3;
+
+    transition: .4s;
 }
 
 .cartView h2{
@@ -116,5 +119,53 @@
 .cartItemList .cartItem button:active{
 
     box-shadow: 1px 1px 2px black;
+}
 
+.cartView .cartViewButtons{
+
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid white;
+    padding: 10px;
+
+}
+
+.cartView .cartViewButtons button{
+
+    padding: 10px;
+    width: 40%;
+
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: rgb(0, 128, 0);
+    color: white;
+
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+#button2{
+    background-color: rgb(106, 198, 255);
+}
+
+.cartView .cartViewButtons #button1:hover{
+
+    cursor: pointer;
+    background-color: rgb(0, 128, 0, 0.8);
+}
+.cartView .cartViewButtons #button1:active {
+
+    cursor: grab;
+    background-color: rgb(0, 128, 0, 0.5);
+}
+
+.cartView .cartViewButtons #button2:hover {
+
+    cursor: pointer;
+    background-color: rgb(106, 198, 255, 0.8);
+}
+
+.cartView .cartViewButtons #button2:active {
+
+    cursor: grab;
+    background-color: rgb(106, 198, 255, 0.5);
 }

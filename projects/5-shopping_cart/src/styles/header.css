@@ -9,7 +9,7 @@
     margin-top: -10px;
     
     background-color: rgb(48, 78, 78);
-    color: rgb(128, 1, 128);  
+    color: rgb(128, 1, 128)
 }
 
 .header h1, h2{
@@ -34,7 +34,19 @@
     cursor: pointer;
     color: rgb(128, 1, 128, 0.8);
     background-color: rgba(98, 160, 160, 0.3);
+
 }
 .header h1:hover{
     cursor: pointer;
+}
+
+.link{
+
+    text-decoration: none;
+    color: rgb(128, 1, 128)
+}
+
+.link:active {
+
+    color: rgb(110, 1, 110)
 }

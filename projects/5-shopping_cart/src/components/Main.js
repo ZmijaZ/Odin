@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { RouteSwitch } from "../pages/RouteSwitch";
-import { Header } from "./Header";
 import { CartView } from "./cart/CartView";
 import { items } from './store/items';
 
@@ -12,6 +11,8 @@ function Main(){
 
     const [cart, setCart] = useState([]);
     const [fitems, setFitems] = useState(items);
+    const [cartStyle, setCartStyle] = useState({ display: 'none'});
+    const [cartV, setCartV] = useState(true);
 
     //filterTypes
     const typeSet = new Set();
@@ -22,13 +23,8 @@ function Main(){
     for(let x of typeSet)
         types.push(x);
     //////////////
-
-    //total priceCart
-    let [price, setPrice] = useState(0);
     
-
-    //
-
+    
     function addItemToCart(id){
         
         items.map(function(newItem){
@@ -46,9 +42,7 @@ function Main(){
         })
 
         setCart([...tmpCart]);
-
     }
-    
     function itemInCart(item){
         for(let x of tmpCart)
             if(x === item)
@@ -56,6 +50,37 @@ function Main(){
         
         return false;
     }
+    // function handleDeleteSchool(id){
+    //     setCv(function(prevState){
+
+    //         const schoolItems = prevState.schoolInfo.filter(function(newItem){
+    //             return id !== newItem.id;
+    //         })
+    //         return({...prevState, schoolInfo: [...schoolItems]});
+    //     })
+    // }
+
+    function filterItems(type){
+
+        types.map(function(newType){
+                if(newType === 'all items')
+                    setFitems(items);
+                else{
+                    if(newType === type){
+                        if(newType === type){
+                            console.log(type);
+                            const newItems = items.filter(function(newItem){
+                                return newItem.type === type;
+                            })
+                            setFitems(newItems);
+                        }
+                    }
+                }
+                
+        return ('none')})
+    }
+    //total priceCart
+    let [price, setPrice] = useState(0);
 
     function handleAdd(id){
         cart.map(function(newItem){
@@ -91,43 +116,30 @@ function Main(){
 
     }
 
-    // function handleDeleteSchool(id){
-    //     setCv(function(prevState){
-
-    //         const schoolItems = prevState.schoolInfo.filter(function(newItem){
-    //             return id !== newItem.id;
-    //         })
-    //         return({...prevState, schoolInfo: [...schoolItems]});
-    //     })
-    // }
-
-
-    function filterItems(type){
-
-        types.map(function(newType){
-                if(newType === 'all items')
-                    setFitems(items);
-                else{
-                    if(newType === type){
-                        if(newType === type){
-                            console.log(type);
-                            const newItems = items.filter(function(newItem){
-                                return newItem.type === type;
-                            })
-                            setFitems(newItems);
-                        }
-                    }
-                }
-                
-        return ('none')})
-
+    function handleShowCart(){
+        setCartV(!cartV);
     }
+
+    useEffect(function(){
+        return (function handleShowCart(){
+            if(cartV)
+                setCartStyle({ display: 'none'});
+                
+            else
+                setCartStyle({ display: 'block'})
+            
+            console.log(cartStyle)
+        }) 
+
+    }, [cartV])
+    
+
 
     return (
         <div className = 'main'>
-            <RouteSwitch items = {fitems} addItemToCart = {addItemToCart} filterItems = {filterItems} types = {types}></RouteSwitch>
+            <RouteSwitch items = {fitems} addItemToCart = {addItemToCart} filterItems = {filterItems} types = {types} showCart = {handleShowCart}></RouteSwitch>
 
-            <CartView cart = {cart} price = {price} onAdd = {handleAdd} onRemove = {handleRemove}></CartView>
+            <CartView cart = {cart} price = {price} onAdd = {handleAdd} onRemove = {handleRemove} cartStyle = {cartStyle} showCart = {handleShowCart}></CartView>
         </div>
     )
 }
