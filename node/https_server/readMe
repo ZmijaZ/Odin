@@ -1,0 +1,20 @@
+Description:
+template for building express apps the way i see them fit, still needs some extra work (like React, and other links) but so far it's alright
+
+first of:
+npm init -y (change the name in package.json from index.js to server.js)
+npm install express
+//
+create server.js and app.js
+
+then, the https stuff:
+openssl genrsa -out key.pem
+openssl req -new -key key.pem -out csr.pem (provide the info)
+openssl x509 -req -days 9 -in csr.pem -signkey key.pem -out cert.pem (should maybe put 9999 days)
+//
+fill the server.js and app.js with needed code, try it out
+
+later on:
+npm install mongoose ejs
+
+Description:
